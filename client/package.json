@@ -1,0 +1,22 @@
+{
+  "name": "zoro-yugo-bot",
+  "version": "1.0.0",
+  "description": "A generic Slackbot that can do anything we tell it to",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/zorotools/eh-team-hack-day.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/zorotools/eh-team-hack-day#readme",
+  "devDependencies": {
+    "http": "0.0.0",
+    "querystring": "^0.2.0",
+    "slack-client": "^1.4.1"
+  }
+}
