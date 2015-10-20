@@ -10,7 +10,10 @@ app = Flask(__name__)
 @app.route("/")
 def get():
     message = request.args.get('message')
-    if message == 'lunch':
+    commands = ['lunch', 'aww', 'happyhour', 'cat']
+    if message == 'help':
+        return "\n".join(commands)
+    elif message == 'lunch':
         return lunch()
     elif message == 'aww':
         return aww()
