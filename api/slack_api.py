@@ -16,6 +16,8 @@ def get():
         return aww()
     elif message == 'happyhour':
         return happyhour()
+    elif message.startswith('cat'):
+        return cat(message)
     else:
         return unknown()
 
@@ -55,6 +57,29 @@ def unknown():
                'Step One: you cut a hole in the box']
     return random.choice(options);
 
+@app.route("/cat")
+def cat(message):
+    import xmltodict
+    if message.startswith('cat me '):
+        category = message.split(' ')[2]
+        r = requests.get('http://thecatapi.com/api/images/get?format=xml&category=' + category)
+        xml = xmltodict.parse(r.text)
+        print 'printing works'
+        if xml['response']['data']['images']:
+            return xml['response']['data']['images']['image']['url']
+        else:
+            return 'That\'s not a valid cat category!'
+    elif message.startswith('cat categories'):
+        r = requests.get('http://thecatapi.com/api/categories/list')
+        xml = xmltodict.parse(r.text)
+        returnString = ""
+        for category in xml['response']['data']['categories']['category']:
+            returnString = returnString + category['name'] + "\n"
+        return returnString
+    else:
+        r = requests.get('http://thecatapi.com/api/images/get?format=xml')
+        xml = xmltodict.parse(r.text)
+        return xml['response']['data']['images']['image']['url']
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', port=8000)
