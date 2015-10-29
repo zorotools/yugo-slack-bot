@@ -1,3 +1,4 @@
 client/node_modules/
 client/index-local.js
 api/env/
+*.pyc
