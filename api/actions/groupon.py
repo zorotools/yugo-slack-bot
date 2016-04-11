@@ -10,14 +10,16 @@ class Groupon(Action):
         self.message = message
         self.categories = ["food", "automotive", "beauty", "fitness", "shopping"]
         self.helpDict = {
-                "yugo groupon {type}": "Randomly choose 5 deals in the type you specified locally",
-                "yugo groupon {type} {location}": "Display 5 randomly"
+                "yugo groupon {type}": "Randomly choose 5 deals in the type you specified",
+                "yugo groupon {type} {location}": "Display 5 deals for the location and type you specified"
                 }
         self.base_url = "https://partner-api.groupon.com/deals.json?tsToken=US_AFF_0_201236_212556_0&"
 
     def render(self):
         custom_url = self.map_url()
         r = requests.get(self.base_url + custom_url)
+        if not r.status_code == 200:
+            r = requests.get(self.base_url)
         data = json.loads(r.text)
         result_list = []
         for deal in data["deals"]:
