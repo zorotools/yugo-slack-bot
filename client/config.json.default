@@ -1,4 +1,5 @@
 {
     "yugoSlackToken": "",
-    "yugoDevCommands": []
+    "yugoDevCommands": ["yugodev"],
+    "yugoDevMode": false
 }
