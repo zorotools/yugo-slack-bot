@@ -7,6 +7,7 @@ from actions.basics import Lunch
 from actions.aww import Aww
 from actions.basics import Happyhour
 from actions.cat import Cat
+from actions.bacon import Bacon
 from actions.help import Help
 from actions.weather import Weather
 
@@ -17,6 +18,7 @@ commands = {
     'aww': Aww,
     'happyhour': Happyhour,
     'cat': Cat,
+    'bacon': Bacon,
     'help': Help,
     'weather': Weather
 }
