@@ -19,9 +19,11 @@ class Geocode(object):
         }
         response = requests.get(self.url + '?' + urllib.urlencode(params))
         data = response.json()
-        return {
-            'name': data['results'][0]['formatted_address'],
-            'latitude': data['results'][0]['geometry']['location']['lat'],
-            'longitude': data['results'][0]['geometry']['location']['lng']
-        }
-        
+        try:
+            return {
+                'name': data['results'][0]['formatted_address'],
+                'latitude': data['results'][0]['geometry']['location']['lat'],
+                'longitude': data['results'][0]['geometry']['location']['lng']
+            }
+        except Exception as e:
+            return False

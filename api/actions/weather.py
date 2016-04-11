@@ -60,9 +60,14 @@ class Weather(Action):
         return return_string
         
     def render(self):
+        if not self.location:
+            return "I'm sorry, I don't recognize that location.\n" + self.renderHelp()
         commands = {
             'current': self.current,
             'forecast': self.forecast
         }
-        return commands[self.command]()
+        try:
+            return commands[self.command]()
+        except Exception as e:
+            return "Oops, I seem to have encountered an error processing your request. This is probably Ben's fault.\n" + self.renderHelp()
         
