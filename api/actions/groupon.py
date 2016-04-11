@@ -1,6 +1,6 @@
 from slack_api_action import Action
 import json
-import  requests
+import requests
 import random
 
 class Groupon(Action):
