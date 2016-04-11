@@ -19,9 +19,7 @@ slack.on('message', function (message) {
     }
     var words = message.text.split(" ");
     var start = words.shift().toLowerCase();
-    var devCommands = [
-        'yugodev'
-    ];
+    var devCommands = config.yugoDevCommands;
     var commands = [
         "<@u0ckd3ksl>",
         "<@u0ckd3ksl>:",
@@ -30,7 +28,7 @@ slack.on('message', function (message) {
         "yugo:",
         "yugo,"
     ];
-    if (commands.indexOf(start) != -1) {
+    if (devCommands.indexOf(start) != -1) {
         http.get("http://localhost:8000/?message=" + encodeURIComponent(words.join(" ")), function (response) {
             response.setEncoding('utf8');
             response.on("data", function(chunk) {
