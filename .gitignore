@@ -2,3 +2,7 @@ client/node_modules/
 client/index-local.js
 api/env/
 *.pyc
+client/config.json
+api/config.py
+api/bin
+api/lib

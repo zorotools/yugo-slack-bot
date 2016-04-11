@@ -1,8 +1,9 @@
 var Slack = require('slack-client');
 var querystring = require('querystring');
 var http = require('http');
+var config = require('./config.json');
 
-var slackToken = 'YUGO_SLACK_TOKEN';
+var slackToken = config.yugoSlackToken;
 var autoReconnect = true;
 var autoMark = true;
 
@@ -18,6 +19,9 @@ slack.on('message', function (message) {
     }
     var words = message.text.split(" ");
     var start = words.shift().toLowerCase();
+    var devCommands = [
+        'yugodev'
+    ];
     var commands = [
         "<@u0ckd3ksl>",
         "<@u0ckd3ksl>:",
