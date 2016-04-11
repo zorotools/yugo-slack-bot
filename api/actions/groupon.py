@@ -9,6 +9,10 @@ class Groupon(Action):
         super(Groupon, self).__init__(message)
         self.message = message
         self.categories = ["food", "automotive", "beauty", "fitness", "shopping"]
+        self.helpDict = {
+                "yugo groupon {type}": "Randomly choose 5 deals in the type you specified locally",
+                "yugo groupon {type} {location}": "Display 5 randomly"
+                }
         self.base_url = "https://partner-api.groupon.com/deals.json?tsToken=US_AFF_0_201236_212556_0&"
 
     def render(self):
@@ -20,15 +24,21 @@ class Groupon(Action):
             deal_url = deal["dealUrl"]
             result = ""
             deal_data = deal["options"][0]
+            url = self.trim_url(deal_data["buyUrl"])
             result += "*" +  deal_data["title"] + "*"+ "\n"
-            result += "Buy this deal at " + deal_url + "\n"
+            result += "Buy this deal at " + url + "\n"
             result_list.append(result)
         random_results =  random.sample(result_list, 5)
         random_string = ""
         for result in random_results:
             random_string += result + "\n"
-
         return random_string
+
+    @staticmethod
+    def trim_url(url_string):
+        parsed = url_string.split("/")
+        parsed.pop()
+        return "/".join(parsed)
 
 
     def map_category(self):
