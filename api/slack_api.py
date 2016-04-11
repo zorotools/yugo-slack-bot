@@ -26,7 +26,6 @@ commands = {
 @app.route("/")
 def get():
     message = request.args.get('message')
-    print message
     command = message.split(' ').pop(0)
     if command in commands:
         cls = commands[command]
