@@ -14,8 +14,7 @@ class Help(Action):
         from slack_api import commands
 
         if self.command and self.command in commands:
-            mod = importlib.import_module(commands[self.command].rsplit('.', 1)[0])
-            cls = getattr(mod, commands[self.command].rsplit('.', 1)[1])
+            cls = commands[self.command]
             inst = cls('')
             return inst.renderHelp()
         else:

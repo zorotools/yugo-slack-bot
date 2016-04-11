@@ -2,11 +2,13 @@ from flask import Flask
 from flask import request
 import importlib
 import random
+import config
 from actions.basics import Lunch
 from actions.aww import Aww
 from actions.basics import Happyhour
 from actions.cat import Cat
 from actions.help import Help
+from actions.weather import Weather
 
 app = Flask(__name__)
 
@@ -15,7 +17,8 @@ commands = {
     'aww': Aww,
     'happyhour': Happyhour,
     'cat': Cat,
-    'help': Help
+    'help': Help,
+    'weather': Weather
 }
 
 @app.route("/")
@@ -40,4 +43,5 @@ def unknown():
     return random.choice(options);
 
 if __name__ == "__main__":
+    app.debug = config.flask_debug
     app.run(host='0.0.0.0', port=8000)

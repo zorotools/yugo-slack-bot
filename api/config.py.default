@@ -1,0 +1,4 @@
+open_weather_map_api_key = ''
+forecast_io_api_key = ''
+google_geocode_api_key = ''
+flask_debug = False
