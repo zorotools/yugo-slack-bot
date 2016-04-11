@@ -9,6 +9,7 @@ from actions.basics import Happyhour
 from actions.cat import Cat
 from actions.bacon import Bacon
 from actions.help import Help
+from actions.groupon import Groupon
 from actions.weather import Weather
 
 app = Flask(__name__)
@@ -20,6 +21,7 @@ commands = {
     'cat': Cat,
     'bacon': Bacon,
     'help': Help,
+    'groupon': Groupon,
     'weather': Weather
 }
 
