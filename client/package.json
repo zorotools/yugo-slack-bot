@@ -9,11 +9,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/zorotools/eh-team-hack-day.git"
+    "url": "https://github.com/zorotools/yugo-slack-bot.git"
   },
   "author": "",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/zorotools/eh-team-hack-day#readme",
+  "homepage": "https://github.com/zorotools/yugo-slack-bot",
   "devDependencies": {
     "http": "0.0.0",
     "querystring": "^0.2.0",
