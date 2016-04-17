@@ -12,9 +12,9 @@ class Aww(Action):
         }
 
     def render(self):
-        r = requests.get('http://www.reddit.com/r/aww.json')
+        r = requests.get('http://www.reddit.com/r/aww.json', headers = {'User-agent': 'Slack Yugo bot 1.01'})
+        awwUrl = "http://imgur.com/x6TwpSQ"
         data = json.loads(r.text)
-        urls = []
-        for i in data['data']['children']:
-            urls.append(i['data']['url'])
-        return random.choice(urls)
+        if data['data']['children']:
+            awwUrl = random.choice(data['data']['children'])['data']['url']
+        return awwUrl
