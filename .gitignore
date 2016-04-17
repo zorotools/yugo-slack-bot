@@ -1,8 +1,11 @@
+*.pyc
+client/config.json
 client/node_modules/
 client/index-local.js
 api/env/
-*.pyc
-client/config.json
+api/bin/
+api/lib/
+api/include/
 api/config.py
-api/bin
-api/lib
+deploy/setenv
+logs/

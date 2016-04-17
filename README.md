@@ -77,3 +77,17 @@ So far we've had little need or desire to do additional development on the Node 
 Some ideas we've had that would make good Node projects include:
 * Having Yugo interact with all conversations, not just those that begin with a recognized keyword. Maybe he should listen for any time someone uses the words "major", "private", "kernel" or the like, and respond with "*salute* Colonel Panic!"
 * Set up a server aspect to listen on a given port. This endpoint could look for two parameters, `channel` and `message`, and post the given message to the given channel any time the endpoint is hit. This would allow us to automate some posts (like a Monday morning weekly weather forecast), using cron or something similar.
+
+## Deploying Yugo
+
+Running the client application in daemon mode requires pm2, process manager for Node.js
+Run `npm install pm2 -g` to install pm2
+
+The server app is daemonized with gunicorn, which should already exist in the virtualenv
+
+Once pm2 is installed, `cd ` into the `/deploy` directory and do the following:
+1. Run `cp setenv.default setenv` to create a working version of the setenv file
+2. Edit `setenv` to set the proper `YUGO_HOME`
+3. You can now start the client/server in daemon mode with `/bin/bash yugo.sh start`
+
+Run `/bin/bash yugo.sh` to see all the available options

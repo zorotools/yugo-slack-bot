@@ -1,0 +1,2 @@
+YUGO_HOME="~"
+export YUGO_HOME
